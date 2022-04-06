@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio wdio.conf.ts --e2e.spec"
+    "test": "wdio wdio.conf.ts --spec e2e.spec",
+    "web": "wdio config/web.conf.ts --spec web.spec",
+    "app": "wdio config/app.conf.ts --spec app.spec"
   },
   "keywords": [],
   "author": "",

@@ -38,7 +38,7 @@ exports.config = {
         }
     },
 
-    logLevel: 'info',
+    logLevel: 'error',
     bail: 0,
     baseUrl: 'http://localhost',
     waitforTimeout: 10000,
