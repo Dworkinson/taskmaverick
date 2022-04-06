@@ -3,3 +3,5 @@
 /src/com.taskmaverick.AUTOTESTapp.apk
 package-lock.json
 pageSource.txt
+*.js
+*.map
