@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2018",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "inlineSources": true,
+    "baseUrl": ".",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "*": [
+        "./*"
+      ],
+      "src/*": [
+        "./src/*"
+      ]
+    },
+    "types": [
+      "node",
+      "wdio-intercept-service",
+      "webdriverio"
+    ]
+  },
+  "include": [
+    "./tests/**/*.ts",
+    "node_modules/webdriverio/async.d.ts",
+    "node_modules/@types/mocha/",
+    "node_modules/@types/mocha/index.d.ts"
+  ]
+}
