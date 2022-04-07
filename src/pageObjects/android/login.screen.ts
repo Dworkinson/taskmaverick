@@ -41,7 +41,7 @@ export class LoginScreen extends Components {
         await (await this.forgotPasswordButton).click();
     }
 
-    async login(email: string, password: string): Promise<void> {
+    async logIn(email: string, password: string): Promise<void> {
         await (await this.enterEmail(email));
         await (await this.enterPassword(password));
         await (await this.clickOnSignInButton());

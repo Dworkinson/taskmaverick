@@ -21,7 +21,6 @@
     "types": [
       "node",
       "wdio-intercept-service",
-      "webdriverio/async",
       "webdriverio"
     ]
   },
