@@ -6,7 +6,8 @@ config.services = [['chromedriver', {
 }]];
 
 config.capabilities = [{
-    browserName: 'chrome'
+    browserName: 'chrome',
+    // "goog:chromeOptions": {args: ["start-maximized"]}
 }];
 
 exports.config = config;

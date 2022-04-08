@@ -1,58 +1,60 @@
-export class Header {
+import {BasePage} from "src/pageObjects/web/base.page";
+
+export class Header extends BasePage {
     private get dashboardButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/dashboards"]');
+        return this.browser.$('[href="/dashboards"]');
     }
 
     private get overviewButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/overview"]');
+        return this.browser.$('[href="/overview"]');
     }
 
     private get libraryButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/library"]');
+        return this.browser.$('[href="/library"]');
     }
 
     private get locationButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/locations"]');
+        return this.browser.$('[href="/locations"]');
     }
 
     private get peopleButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/people"]');
+        return this.browser.$('[href="/people"]');
     }
 
     private get departmentButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/departments"]');
+        return this.browser.$('[href="/departments"]');
     }
 
     private get groupButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/groups"]');
+        return this.browser.$('[href="/groups"]');
     }
 
     private get reportingButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/reporting"]');
+        return this.browser.$('[href="/reporting"]');
     }
 
     private get timeButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/time"]');
+        return this.browser.$('[href="/time"]');
     }
 
     private get notificationsButton(): Promise<WebdriverIO.Element> {
-        return $('[class*="notifications"]');
+        return this.browser.$('[class*="notifications"]');
     }
 
     private get settingsButton(): Promise<WebdriverIO.Element> {
-        return $('[class*="settings"]');
+        return this.browser.$('[class*="settings"]');
     }
 
     private get userAvatarButton(): Promise<WebdriverIO.Element> {
-        return $('[class*="user-avatar"]');
+        return this.browser.$('[class*="user-avatar"]');
     }
 
     private get accountInfoButton(): Promise<WebdriverIO.Element> {
-        return $('[href="/account-info"]');
+        return this.browser.$('[href="/account-info"]');
     }
 
     private get signOutButton(): Promise<WebdriverIO.Element> {
-        return $('=Sign Out');
+        return this.browser.$('=Sign Out');
     }
 
     async clickOnDashboardButton(): Promise<void> {

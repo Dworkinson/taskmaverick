@@ -1,14 +1,20 @@
-export class LoginPage {
+import {BasePage} from "src/pageObjects/web/base.page";
+
+export class LoginPage extends BasePage{
+    async open(): Promise<void> {
+        await this.browser.url('https://test-org.qa-auto.taskmaverick-feature.com/');
+    }
+
     private get emailForm(): Promise<WebdriverIO.Element> {
-        return $('[type="email"]');
+        return this.browser.$('[type="email"]');
     }
 
     private get passwordForm(): Promise<WebdriverIO.Element> {
-        return $('[type="password"]');
+        return this.browser.$('[type="password"]');
     }
 
     private get signInButton(): Promise<WebdriverIO.Element> {
-        return $('[name="button"]');
+        return this.browser.$('[name="button"]');
     }
 
     async enterEmail(email: string): Promise<void> {
