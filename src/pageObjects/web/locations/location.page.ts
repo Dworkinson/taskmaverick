@@ -1,5 +1,5 @@
-import {BasePage} from "./base.page";
-import {CreateLocationComponent} from "src/pageObjects/web/createLocation.component";
+import {BasePage} from "../base.page";
+import {CreateLocationComponent} from "./createLocation.component";
 
 export class LocationPage extends BasePage {
     createLocationComponent: CreateLocationComponent;

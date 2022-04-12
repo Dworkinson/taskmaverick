@@ -1,4 +1,4 @@
-import {BasePage} from "./base.page";
+import {BasePage} from "../base.page";
 
 export class CreateLocationComponent extends BasePage {
     private get saveContinueButton(): Promise<WebdriverIO.Element> {
@@ -21,6 +21,10 @@ export class CreateLocationComponent extends BasePage {
         return this.browser.$('[formcontrolname="tags"]');
     }
 
+    private get createNewTag(): Promise<WebdriverIO.Element> {
+        return this.browser.$('[class*=new-tag]');
+    }
+
     private get addressField(): Promise<WebdriverIO.Element> {
         return this.browser.$('[placeholder*="Street"]');
     }
@@ -33,10 +37,6 @@ export class CreateLocationComponent extends BasePage {
         return this.browser.$$('[class="placeholder"]')
     }
 
-    private get searchField(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[placeholder="Search"]');
-    }
-
     private get dropdownElements(): Promise<WebdriverIO.ElementArray> {
         return this.browser.$$('[class*="active"] [class*=dropdown-option]');
     }
@@ -45,14 +45,40 @@ export class CreateLocationComponent extends BasePage {
         return this.browser.$('[placeholder="ZIP"]');
     }
 
-    async clickOnSaveContinue(): Promise<void> {
-        // await (await this.saveContinueButton).waitForEnabled();
-        // await (await this.saveContinueButton).click();
-        await (await this.saveContinueButton)
+    private get discardButton(): Promise<WebdriverIO.Element> {
+        return this.browser.$('[class="modal-dialog"] [class="btn btn-danger"]');
+    }
+
+    private get locationHeader(): Promise<WebdriverIO.ElementArray> {
+        return this.browser.$$('[class="border-bottom"] [class="d-flex"] [class*="step d-flex"]');
+    }
+
+    async clickOnPeopleInLocation(): Promise<void> {
+        await this.browser.pause();
+        await (await this.locationHeader)[1].waitForDisplayed();
+        await (await this.locationHeader)[1].click()
+    }
+
+    async clickOnPeopleInDepartment(): Promise<void> {
+        await this.browser.pause();
+        await (await this.locationHeader)[2].waitForDisplayed();
+        await (await this.locationHeader)[2].click()
+    }
+
+    async clickOnPeopleInLocationGroup(): Promise<void> {
+        await this.browser.pause();
+        await (await this.locationHeader)[3].waitForDisplayed();
+        await (await this.locationHeader)[3].click()
+    }
+
+    async clickOnSave(): Promise<void> {
+        await this.browser.pause();
+        await (await this.saveContinueButton).waitForEnabled();
+        await (await this.saveContinueButton).click();
     }
 
     async clickOnClose(): Promise<void> {
-        await (await this.closeButton).waitForClickable();
+        await (await this.closeButton).waitForEnabled();
         await (await this.closeButton).click();
     }
 
@@ -63,12 +89,22 @@ export class CreateLocationComponent extends BasePage {
 
     async enterId(id: string): Promise<void> {
         await (await this.idField).waitForDisplayed();
+        await (await this.idField).click();
         await (await this.idField).setValue(id);
     }
 
     async enterTag(tag: string): Promise<void> {
-        await (await this.tagField).waitForDisplayed();
-        await (await this.tagField).setValue(tag);
+        await this.clickOnTag();
+        await (await this.tagField).$('<input />').waitForDisplayed();
+        await (await this.tagField).$('<input />').setValue(tag);
+    }
+
+    async clickOnTag(): Promise<void> {
+        await (await this.tagField).click();
+    }
+
+    async clickOnCreateNewTag(): Promise<void> {
+        await (await this.createNewTag).click();
     }
 
     async enterAddress(address: string): Promise<void> {
@@ -82,37 +118,33 @@ export class CreateLocationComponent extends BasePage {
     }
 
     async clickOnStateField(): Promise<void> {
-        await (await this.stateCountryCityDropdowns)[0].waitForClickable();
-        await (await this.stateCountryCityDropdowns)[0].click();}
+        await (await this.stateCountryCityDropdowns)[0].waitForEnabled();
+        await (await this.stateCountryCityDropdowns)[0].click();
+    }
 
     async clickOnCountryField(): Promise<void> {
-        await (await this.stateCountryCityDropdowns)[0].waitForClickable();
+        await (await this.stateCountryCityDropdowns)[0].waitForEnabled();
         await (await this.stateCountryCityDropdowns)[0].click();
     }
 
     async clickOnCityField(): Promise<void> {
-        await (await this.stateCountryCityDropdowns)[0].waitForClickable();
+        await (await this.stateCountryCityDropdowns)[0].waitForEnabled();
         await (await this.stateCountryCityDropdowns)[0].click();
     }
-
-    // async enterValue(val: string): Promise<void> {
-    //     await (await this.searchField).waitForDisplayed();
-    //     await (await this.searchField).setValue(val);
-    // }
 
     async enterZipCode(code: number): Promise<void> {
         await (await this.zipCodeField).waitForDisplayed();
         await (await this.zipCodeField).setValue(code);
-        await this.browser.keys('Enter');
     }
 
     async chooseRandomElement(): Promise<void> {
-        await (await this.dropdownElements)[0].waitForClickable();
-        const randomIndex = Math.floor(Math.random() * (await this.dropdownElements).length)
-        // while(!(await (await this.dropdownElements)[randomIndex].isDisplayedInViewport())) {
-        //     await this.browser.keys('Down arrow');
-        // }
-        // await this.browser.keys('Enter');
+        await (await this.dropdownElements)[0].waitForEnabled();
+        const randomIndex = Math.floor(Math.random() * (await this.dropdownElements).length);
         await (await this.dropdownElements)[randomIndex].click();
+    }
+
+    async clickDiscard(): Promise<void> {
+        await (await this.discardButton).waitForEnabled();
+        await (await this.discardButton).click();
     }
 }

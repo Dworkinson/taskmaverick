@@ -12,7 +12,6 @@ export class BaseScreen {
     }
 
     private _buildSelector(text: string, method: string = 'textContains', ...args): string {
-        // return `new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().${method}("${text}"))`;
         return `new UiSelector().${method}("${text}")${args}`
     }
 

@@ -41,7 +41,7 @@ exports.config = {
     logLevel: 'error',
     bail: 0,
     baseUrl: 'http://localhost',
-    waitforTimeout: 10000,
+    waitforTimeout: 60 * 1000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
 
