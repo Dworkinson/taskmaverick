@@ -1,11 +1,18 @@
 import {BasePage} from "../base.page";
 import {CreateLocationComponent} from "./createLocation.component";
+import {LocationInfoComponent} from "src/pageObjects/web/locations/locationInfo.component";
 
 export class LocationPage extends BasePage {
     createLocationComponent: CreateLocationComponent;
-    constructor(browser: WebdriverIO.Browser, createLocationComponent = new CreateLocationComponent(browser)) {
+    locationInfo: LocationInfoComponent;
+    constructor(
+        browser: WebdriverIO.Browser,
+        createLocationComponent = new CreateLocationComponent(browser),
+        locationInfo = new LocationInfoComponent(browser)
+    ) {
         super(browser);
         this.createLocationComponent = createLocationComponent;
+        this.locationInfo = locationInfo;
     }
 
     private get groupBy(): Promise<WebdriverIO.Element> {

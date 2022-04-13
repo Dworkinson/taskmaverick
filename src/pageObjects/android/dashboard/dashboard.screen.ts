@@ -45,6 +45,10 @@ export class DashboardScreen extends BaseScreen {
         return this.buildSelector('All', 'text');
     }
 
+    private get title(): Promise<WebdriverIO.Element> {
+        return this.buildSelector('.*tvTitle.*', 'resourceIdMatches');
+    }
+
     async clickOnBoard(): Promise<void> {
         await (await this.board).waitForEnabled();
         await (await this.board).click();
@@ -93,5 +97,11 @@ export class DashboardScreen extends BaseScreen {
     async clickOnAllStatistics(): Promise<void> {
         await (await this.allStatistics).waitForEnabled();
         await (await this.allStatistics).click();
+    }
+
+    async getLocationName(): Promise<string> {
+        await this.browser.pause();
+        await (await this.title).waitForDisplayed();
+        return (await this.title).getText();
     }
 }

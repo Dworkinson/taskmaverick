@@ -29,7 +29,7 @@ export class LocationInfoComponent extends BasePage {
         return this.browser.$$('[class="col-sm"] [class*="row"]');
     }
 
-    async getLocationContent(desiredContent: string): Promise<Object> {
+    async getLocationContent(desiredContent: string): Promise<string> {
         await this.browser.$('[class="col-sm"] [class*="row"]').waitForDisplayed();
         let allContent = new Map<string, string>();
 

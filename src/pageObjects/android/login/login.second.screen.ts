@@ -20,6 +20,14 @@ export class LoginSecondScreen extends BaseScreen {
         return this.buildSelector('Remind Personal Code');
     }
 
+    private get yesButton(): Promise<WebdriverIO.Element> {
+        return this.buildSelector('YES', 'text');
+    }
+
+    private get noButton(): Promise<WebdriverIO.Element> {
+        return this.buildSelector('NO', 'text');
+    }
+
     async clickOnLocationLogin(): Promise<void> {
         await (await this.locationLogin).waitForEnabled();
         await (await this.locationLogin).click();
@@ -33,5 +41,15 @@ export class LoginSecondScreen extends BaseScreen {
     async clickOnRemindPersonalCode(): Promise<void> {
         await (await this.personalLogin).waitForEnabled();
         await (await this.remindPersonalCode).click();
+    }
+
+    async clickYes(): Promise<void> {
+        await (await this.yesButton).waitForEnabled();
+        await (await this.yesButton).click();
+    }
+
+    async clickNo(): Promise<void> {
+        await (await this.noButton).waitForEnabled();
+        await (await this.noButton).click();
     }
 }

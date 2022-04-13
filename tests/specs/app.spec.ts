@@ -1,4 +1,5 @@
 import * as screens from "src/pageObjects/android/allScreens";
+import {expect} from 'chai';
 
 import {creds} from "../../creds";
 

@@ -56,25 +56,29 @@ export class CreateLocationComponent extends BasePage {
     async clickOnPeopleInLocation(): Promise<void> {
         await this.browser.pause();
         await (await this.locationHeader)[1].waitForDisplayed();
-        await (await this.locationHeader)[1].click()
+        await (await this.locationHeader)[1].click();
+        await this.browser.pause();
     }
 
     async clickOnPeopleInDepartment(): Promise<void> {
         await this.browser.pause();
         await (await this.locationHeader)[2].waitForDisplayed();
-        await (await this.locationHeader)[2].click()
+        await (await this.locationHeader)[2].click();
+        await this.browser.pause();
     }
 
     async clickOnPeopleInLocationGroup(): Promise<void> {
         await this.browser.pause();
         await (await this.locationHeader)[3].waitForDisplayed();
-        await (await this.locationHeader)[3].click()
+        await (await this.locationHeader)[3].click();
+        await this.browser.pause();
     }
 
     async clickOnSave(): Promise<void> {
         await this.browser.pause();
         await (await this.saveContinueButton).waitForEnabled();
         await (await this.saveContinueButton).click();
+        await this.browser.pause();
     }
 
     async clickOnClose(): Promise<void> {
@@ -146,5 +150,25 @@ export class CreateLocationComponent extends BasePage {
     async clickDiscard(): Promise<void> {
         await (await this.discardButton).waitForEnabled();
         await (await this.discardButton).click();
+    }
+
+    async addUser(userName: string): Promise<void> {
+        const user = await this.browser.$(`//*[contains(@class, 'items')]/*[contains(text(), '${userName}')]/../*[contains(@class, 'checkbox')]`);
+        await user.waitForDisplayed();
+        await user.click();
+    }
+
+    async addDepartment(departmentName: string): Promise<void> {
+        const addDepartment = await this.browser.$('[role="button"]');
+        await addDepartment.click();
+
+        const department = await this.browser.$(`//*[contains(@class, 'dropdown')]/*[contains(text(), '${departmentName}')]`);
+        await department.click();
+    }
+
+    async clickOnAddedDepartment(): Promise<void> {
+        const department = await this.browser.$('//*[contains(@class, "selectable")]/tbody');
+        await department.waitForDisplayed();
+        await department.click();
     }
 }
