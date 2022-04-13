@@ -43,7 +43,7 @@ export class SettingCodeScreen extends BaseScreen {
     }
 
     private get deleteButton(): Promise<WebdriverIO.Element> {
-        return this.buildSelector('btnDel', 'resourceIdMatches')
+        return this.buildSelector('.*btnDel.*', 'resourceIdMatches')
     }
 
     private get loginButton(): Promise<WebdriverIO.Element> {
