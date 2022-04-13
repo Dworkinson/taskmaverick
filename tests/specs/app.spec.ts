@@ -1,11 +1,13 @@
-import {screens} from "src/pageObjects/android/allScreens";
+import * as screens from "src/pageObjects/android/allScreens";
+import {expect} from 'chai';
+
 import {creds} from "../../creds";
 
-const login = screens.login;
-
+const fs = require('fs');
 
 describe('Login android app using valid email/password', async () => {
     it('android app loaded', async () => {
-        await login.logIn(creds.email, creds.password);
+        const login = new screens.LoginScreen(browser);
+        await login.logIn(creds.ADMIN_USERNAME, creds.ADMIN_PASSWORD);
     });
 });

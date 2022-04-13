@@ -6,7 +6,7 @@ config.services = [['chromedriver', {
 }]];
 
 config.capabilities = [{
-    browserName: 'chrome'
+    browserName: 'chrome',
 }];
 
 exports.config = config;

@@ -6,3 +6,5 @@ pageSource.txt
 *.js
 *.map
 creds.ts
+./pageSource
+*.txt
