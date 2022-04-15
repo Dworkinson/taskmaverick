@@ -5,36 +5,22 @@ export class LoginPage extends BasePage{
         await this.browser.url('https://test-org.qa-auto.taskmaverick-feature.com/');
     }
 
-    private get emailForm(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[type="email"]');
-    }
-
-    private get passwordForm(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[type="password"]');
-    }
-
-    private get signInButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[name="button"]');
-    }
-
     async enterEmail(email: string): Promise<void> {
-        await (await this.emailForm).waitForDisplayed();
-        await (await this.emailForm).setValue(email);
+        const emailForm = this.browser.$('[type="email"]');
+        await emailForm.waitForDisplayed();
+        await emailForm.setValue(email);
     }
 
     async enterPassword(password: string): Promise<void> {
-        await (await this.passwordForm).waitForDisplayed();
-        await (await this.passwordForm).setValue(password);
-    }
-
-    async isSignInButtonEnabled(): Promise<boolean> {
-        await (await this.signInButton).waitForDisplayed();
-        return (await this.signInButton).isEnabled();
+        const passwordForm = this.browser.$('[type="password"]');
+        await passwordForm.waitForDisplayed();
+        await passwordForm.setValue(password);
     }
 
     async clickOnSignInButton(): Promise<void> {
-        await (await this.signInButton).waitForClickable();
-        await (await this.signInButton).click();
+        const signIn = this.browser.$('[name="button"]');
+        await signIn.waitForClickable();
+        await signIn.click();
     }
 
     async logIn(email: string, password: string): Promise<void> {

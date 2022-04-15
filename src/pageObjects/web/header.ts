@@ -1,137 +1,89 @@
 import {BasePage} from "src/pageObjects/web/base.page";
 
 export class Header extends BasePage {
-    private get dashboardButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/dashboards"]');
-    }
-
-    private get overviewButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/overview"]');
-    }
-
-    private get libraryButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/library"]');
-    }
-
-    private get locationButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/locations"]');
-    }
-
-    private get peopleButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/people"]');
-    }
-
-    private get departmentButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/departments"]');
-    }
-
-    private get groupButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/groups"]');
-    }
-
-    private get reportingButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/reporting"]');
-    }
-
-    private get timeButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/time"]');
-    }
-
-    private get notificationsButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[class*="notifications"]');
-    }
-
-    private get settingsButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[class*="settings"]');
-    }
-
-    private get userAvatarButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[class*="user-avatar"]');
-    }
-
-    private get accountInfoButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('[href="/account-info"]');
-    }
-
-    private get signOutButton(): Promise<WebdriverIO.Element> {
-        return this.browser.$('=Sign Out');
-    }
-
     async clickOnDashboardButton(): Promise<void> {
         await this.browser.pause();
-        await (await this.dashboardButton).waitForClickable();
-        await (await this.dashboardButton).click();
+        const dashboard = this.browser.$('[href="/dashboards"]');
+        await dashboard.waitForClickable();
+        await dashboard.click();
     }
 
     async clickOnOverviewButton(): Promise<void> {
         await this.browser.pause();
-        await (await this.overviewButton).waitForClickable();
-        await (await this.overviewButton).click();
+        const overview = this.browser.$('[href="/overview"]');
+        await overview.waitForClickable();
+        await overview.click();
     }
 
     async clickOnLibraryButton(): Promise<void> {
         await this.browser.pause();
-        await (await this.libraryButton).waitForClickable();
-        await (await this.libraryButton).click();
+        const library = this.browser.$('[href="/library"]');
+        await library.waitForClickable();
+        await library.click();
     }
 
     async clickOnLocationsButton(): Promise<void> {
         await this.browser.pause();
-        await (await this.locationButton).waitForClickable();
-        await (await this.locationButton).click();
+        const location = this.browser.$('[href="/locations"]');
+        await location.waitForClickable();
+        await location.click();
     }
 
     async clickOnPeopleButton(): Promise<void> {
         await this.browser.pause();
-        await (await this.peopleButton).waitForClickable();
-        await (await this.peopleButton).click();
+        const people = this.browser.$('[href="/people"]');
+        await people.waitForClickable();
+        await people.click();
     }
 
     async clickOnDepartmentButton(): Promise<void> {
-        await this.browser.pause();
-        await (await this.departmentButton).waitForClickable();
-        await (await this.departmentButton).click();
+        const department = this.browser.$('[href="/departments"]');
+        await department.waitForClickable();
+        await department.click();
     }
 
     async clickOnGroupButton(): Promise<void> {
         await this.browser.pause();
-        await (await this.groupButton).waitForClickable();
-        await (await this.groupButton).click();
+        const group = this.browser.$('[href="/groups"]');
+        await group.waitForClickable();
+        await group.click();
     }
 
     async clickOnReportingButton(): Promise<void> {
         await this.browser.pause();
-        await (await this.reportingButton).waitForClickable();
-        await (await this.reportingButton).click();
+        const reporting = this.browser.$('[href="/reporting"]');
+        await reporting.waitForClickable();
+        await reporting.click();
     }
 
     async clickOnTimeButton(): Promise<void> {
         await this.browser.pause();
-        await (await this.timeButton).waitForClickable();
-        await (await this.timeButton).click();
+        const time = this.browser.$('[href="/time"]');
+        await time.waitForClickable();
+        await time.click();
     }
 
     async clickOnNotificationsButton(): Promise<void> {
-        await this.browser.pause();
-        await (await this.notificationsButton).waitForClickable();
-        await (await this.notificationsButton).click();
+        const notifications = this.browser.$('[class*="notifications"]');
+        await notifications.waitForClickable();
+        await notifications.click();
     }
 
     async clickOnUserAvatarButton(): Promise<void> {
-        await this.browser.pause();
-        await (await this.userAvatarButton).waitForClickable();
-        await (await this.userAvatarButton).click();
+        const userAvatar = this.browser.$('[class*="user-avatar"]');
+        await userAvatar.waitForClickable();
+        await userAvatar.click();
     }
 
     async clickOnAccountInfoButton(): Promise<void> {
-        await this.browser.pause();
-        await (await this.accountInfoButton).waitForClickable();
-        await (await this.accountInfoButton).click();
+        const accountInfo = this.browser.$('[href="/account-info"]');
+        await accountInfo.waitForClickable();
+        await accountInfo.click();
     }
 
     async clickOnSignOutButton(): Promise<void> {
-        await this.browser.pause();
-        await (await this.signOutButton).waitForClickable();
-        await (await this.signOutButton).click();
+        const singOut = this.browser.$('//*[contains(text(), "Sign Out")]');
+        await singOut.waitForClickable();
+        await singOut.click();
     }
 }

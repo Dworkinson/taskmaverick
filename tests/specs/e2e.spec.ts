@@ -23,34 +23,34 @@ describe('e2e: ', async () => {
         await webHeader.clickOnLocationsButton();
         await webLocations.clickOnCreateNewLocation();
 
-        await webLocations.createLocationComponent.clickOnStateField();
-        await webLocations.createLocationComponent.chooseRandomElement();
-        await webLocations.createLocationComponent.clickOnCountryField();
-        await webLocations.createLocationComponent.chooseRandomElement();
-        await webLocations.createLocationComponent.clickOnCityField();
-        await webLocations.createLocationComponent.chooseRandomElement();
+        await webLocations.createLocation.clickOnStateField();
+        await webLocations.createLocation.chooseRandomElement();
+        await webLocations.createLocation.clickOnCountryField();
+        await webLocations.createLocation.chooseRandomElement();
+        await webLocations.createLocation.clickOnCityField();
+        await webLocations.createLocation.chooseRandomElement();
 
-        await webLocations.createLocationComponent.enterName('Test Location');
-        await webLocations.createLocationComponent.enterId('L002');
-        await webLocations.createLocationComponent.enterTag('AutoTag');
-        await webLocations.createLocationComponent.clickOnCreateNewTag();
-        await webLocations.createLocationComponent.enterAddress('Private Drive street');
-        await webLocations.createLocationComponent.enterZipCode(11111);
-        await webLocations.createLocationComponent.clickOnSave();
+        await webLocations.createLocation.enterName('Test Location');
+        await webLocations.createLocation.enterId('L002');
+        await webLocations.createLocation.enterTag('AutoTag');
+        await webLocations.createLocation.clickOnCreateNewTag();
+        await webLocations.createLocation.enterAddress('Private Drive street');
+        await webLocations.createLocation.enterZipCode(11111);
+        await webLocations.createLocation.clickOnSave();
 
-        await webLocations.createLocationComponent.clickOnPeopleInLocation();
-        await webLocations.createLocationComponent.addUser('Admin Admin');
-        await webLocations.createLocationComponent.clickOnSave();
+        await webLocations.createLocation.clickOnPeopleInLocation();
+        await webLocations.createLocation.addUser('Admin Admin');
+        await webLocations.createLocation.clickOnSave();
 
-        await webLocations.createLocationComponent.clickOnPeopleInDepartment();
-        await webLocations.createLocationComponent.addDepartment('AutoDepartment');
-        await webLocations.createLocationComponent.clickOnAddedDepartment();
-        await webLocations.createLocationComponent.addUser('Admin Admin');
-        await webLocations.createLocationComponent.clickOnSave();
+        await webLocations.createLocation.clickOnPeopleInDepartment();
+        await webLocations.createLocation.addDepartment('AutoDepartment');
+        await webLocations.createLocation.clickOnAddedDepartment();
+        await webLocations.createLocation.addUser('Admin Admin');
+        await webLocations.createLocation.clickOnSave();
 
-        await webLocations.createLocationComponent.clickOnPeopleInLocationGroup();
-        await webLocations.createLocationComponent.addUser('Admin Admin');
-        await webLocations.createLocationComponent.clickOnSave();
+        await webLocations.createLocation.clickOnPeopleInLocationGroup();
+        await webLocations.createLocation.addUser('Admin Admin');
+        await webLocations.createLocation.clickOnSave();
 
         await webHeader.clickOnLocationsButton();
         await webCreatedLocation.clickOnLocation();

@@ -1,5 +1,4 @@
 import {BaseScreen} from "../base.screen";
-import {SettingCodeScreen} from "src/pageObjects/android/login/settingCode.screen";
 
 export class LoginScreen extends BaseScreen {
     private get emailForm(): Promise<WebdriverIO.Element> {

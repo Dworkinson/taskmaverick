@@ -7,12 +7,9 @@ export class CheckCreatedLocation extends BasePage {
         this._location = locationName;
     }
 
-    private get location(): Promise<WebdriverIO.Element> {
-        return this.browser.$(`.p-0*=${this._location}`);
-    }
-
     async clickOnLocation(): Promise<void> {
-        await (await this.location).waitForDisplayed();
-        await (await this.location).click();
+        const location = await this.browser.$(`.p-0*=${this._location}`);
+        await location.waitForClickable();
+        await location.click();
     }
 }

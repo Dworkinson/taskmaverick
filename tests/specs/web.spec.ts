@@ -8,13 +8,12 @@ describe('Single mode for web app', async () => {
         const login = new pages.LoginPage(browser);
         const header = new pages.Header(browser);
         await browser.url('https://test-org.qa-auto.taskmaverick-feature.com/');
-        expect(await login.isSignInButtonEnabled()).to.be.false;
         await login.logIn(creds.ADMIN_USERNAME, creds.ADMIN_PASSWORD);
         await header.clickOnUserAvatarButton();
         await header.clickOnSignOutButton();
     });
 
-    it(' creating new location debugging', async () => {
+    it.only(' creating new location debugging (create + delete location)', async () => {
         const locationName = 'Test Location';
 
         const login = new pages.LoginPage(browser);
@@ -28,37 +27,52 @@ describe('Single mode for web app', async () => {
         await header.clickOnLocationsButton();
         await locations.clickOnCreateNewLocation();
 
-        await locations.createLocationComponent.clickOnStateField();
-        await locations.createLocationComponent.chooseRandomElement();
-        await locations.createLocationComponent.clickOnCountryField();
-        await locations.createLocationComponent.chooseRandomElement();
-        await locations.createLocationComponent.clickOnCityField();
-        await locations.createLocationComponent.chooseRandomElement();
+        await locations.createLocation.clickOnStateField();
+        await locations.createLocation.chooseRandomElement();
+        await locations.createLocation.clickOnCountryField();
+        await locations.createLocation.chooseRandomElement();
+        await locations.createLocation.clickOnCityField();
+        await locations.createLocation.chooseRandomElement();
 
-        await locations.createLocationComponent.enterName('Test Location');
-        await locations.createLocationComponent.enterId('L002');
-        await locations.createLocationComponent.enterTag('AutoTag');
-        await locations.createLocationComponent.clickOnCreateNewTag();
-        await locations.createLocationComponent.enterAddress('Private Drive street');
-        await locations.createLocationComponent.enterZipCode(11111);
-        await locations.createLocationComponent.clickOnSave();
+        await locations.createLocation.enterName(locationName);
+        await locations.createLocation.enterId('L002');
+        await locations.createLocation.enterTag('AutoTag');
+        await locations.createLocation.clickOnCreateNewTag();
+        await locations.createLocation.enterAddress('Private Drive street');
+        await locations.createLocation.enterZipCode(11111);
+        await locations.createLocation.clickOnSave();
 
-        await locations.createLocationComponent.clickOnPeopleInLocation();
-        await locations.createLocationComponent.addUser('Admin Admin');
-        await locations.createLocationComponent.clickOnSave();
+        await locations.createLocation.clickOnPeopleInLocation();
+        await locations.createLocation.addUser('Admin Admin');
+        await locations.createLocation.clickOnSave();
 
-        await locations.createLocationComponent.clickOnPeopleInDepartment();
-        await locations.createLocationComponent.addDepartment('AutoDepartment');
-        await locations.createLocationComponent.clickOnAddedDepartment();
-        await locations.createLocationComponent.addUser('Admin Admin');
-        await locations.createLocationComponent.clickOnSave();
+        await locations.createLocation.clickOnPeopleInDepartment();
+        await locations.createLocation.addDepartment('AutoDepartment');
+        await locations.createLocation.clickOnAddedDepartment();
+        await locations.createLocation.addUser('Admin Admin');
+        await locations.createLocation.clickOnSave();
 
-        await locations.createLocationComponent.clickOnPeopleInLocationGroup();
-        await locations.createLocationComponent.addUser('Admin Admin');
-        await locations.createLocationComponent.clickOnSave();
+        await locations.createLocation.clickOnPeopleInLocationGroup();
+        await locations.createLocation.addUser('Admin Admin');
+        await locations.createLocation.clickOnSave();
 
         await header.clickOnLocationsButton();
         await createdLocation.clickOnLocation();
         const locationCode = await locations.locationInfo.getLocationContent('Location Code');
+
+        await locations.locationInfo.clickOnActionsButton();
+        await locations.locationInfo.clickOnDeactivateButton();
+        await locations.locationInfo.clickOnConfirmButton();
+
+        await createdLocation.clickOnLocation();
+        await locations.locationInfo.clickOnActionsButton();
+        await locations.locationInfo.clickOnDeleteButton();
+        await locations.locationInfo.clickOnConfirmButton();
+
+        console.log('===============');
+        console.log(locationCode);
+        console.log('===============');
+
+        await browser.pause(5000);
     });
 });
