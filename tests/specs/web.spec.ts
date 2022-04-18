@@ -13,7 +13,7 @@ describe('Single mode for web app', async () => {
         await header.clickOnSignOutButton();
     });
 
-    it.only(' creating new location debugging (create + delete location)', async () => {
+    it(' creating new location debugging (create + delete location)', async () => {
         const locationName = 'Test Location';
 
         const login = new pages.LoginPage(browser);
